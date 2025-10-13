@@ -1,306 +1,374 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kavya Sri | UI/UX & Front-End Developer</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kavya Sri | Front-End Developer Portfolio</title>
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --primary-color: #4A90E2; /* A professional, modern blue */
-      --secondary-color: #343a40; /* Dark gray for text */
-      --light-gray: #f8f9fa;
-      --border-color: #dee2e6;
-      --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+    :root{
+      --bg-dark:#0f1226;
+      --card-bg:#141426;
+      --text-light:#e8eef6;
+      --muted:#9fb0c9;
+      --accent:#00c2cb;
+      --shadow:0 8px 30px rgba(0,0,0,0.45);
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      color: var(--secondary-color);
-      scroll-behavior: smooth;
-      line-height: 1.7;
+    html { scroll-behavior: smooth; }
+    body{
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(180deg,#0b0c16 0%,var(--bg-dark)100%);
+      color:var(--text-light);
+      margin:0;
+      padding-top:72px;
     }
 
-    /* Navbar (Glassmorphism Effect) */
-    .navbar {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    .navbar{
+      background:rgba(10,11,20,0.85);
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .navbar-brand{
+      font-family:'Roboto Mono',monospace;
+      font-weight:700;
+      color:var(--accent)!important;
+    }
+    .nav-link{
+      color:rgba(255,255,255,0.85)!important;
+      font-weight:600;
+    }
+    .nav-link:hover,.nav-link.active{color:var(--accent)!important;}
+
+    /* Hero */
+    .hero{
+      padding:120px 20px 80px;
+      text-align:center;
+    }
+    .hero h1{
+      font-family:'Roboto Mono',monospace;
+      font-size:clamp(2rem,4.2vw,3.6rem);
+      background:linear-gradient(90deg,#00c2cb,#6dd5ed);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+    .hero p{
+      max-width:800px;
+      margin:20px auto 28px;
+      color:var(--muted);
     }
 
-    .navbar-brand {
-      font-weight: 700;
-      color: var(--primary-color) !important;
+    .btn-accent{
+      background:var(--accent);
+      color:#061017;
+      font-weight:700;
+      border:none;
+      border-radius:8px;
+      padding:.6rem 1rem;
+      text-decoration:none;
     }
-    
-    .nav-link {
-        font-weight: 500;
-        transition: color 0.3s;
+    .btn-accent:hover{
+      box-shadow:0 0 20px rgba(0,194,203,0.4);
+      transform:translateY(-3px);
+      background:var(--accent);
     }
-    .nav-link:hover, .nav-link.active {
-        color: var(--primary-color) !important;
+    .btn-outline-accent{
+      background:transparent;
+      border:1px solid var(--accent);
+      color:var(--accent);
+      border-radius:8px;
+      font-weight:700;
+      padding:.6rem 1rem;
+      text-decoration:none;
     }
-
-    /* Hero Section */
-    .hero {
-      background-color: var(--light-gray);
-      text-align: center;
-      padding: 120px 20px;
-    }
-
-    .hero h1 {
-      font-weight: 700;
-      font-size: 3.5rem;
-      color: var(--secondary-color);
-    }
-
-    .hero .highlight {
-      color: var(--primary-color);
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      max-width: 650px;
-      margin: 20px auto 30px;
-      color: #6c757d;
+    .btn-outline-accent:hover{
+      background:var(--accent);
+      color:#061017;
+      box-shadow:0 0 15px rgba(0,194,203,0.4);
     }
 
-    /* Buttons */
-    .btn-primary-custom {
-      background-color: var(--primary-color);
-      color: white;
-      border: 2px solid var(--primary-color);
-      border-radius: 50px;
-      padding: 12px 30px;
-      font-weight: 600;
-      transition: all 0.3s ease;
+    section{padding:70px 0;}
+    .section-title{
+      text-align:center;
+      text-transform:uppercase;
+      font-weight:700;
+      letter-spacing:1px;
+    }
+    .section-title::after{
+      content:"";
+      display:block;
+      width:70px;
+      height:3px;
+      background:var(--accent);
+      margin:10px auto;
+      border-radius:2px;
+      box-shadow:0 0 10px rgba(0,194,203,0.4);
     }
 
-    .btn-primary-custom:hover {
-      background-color: transparent;
-      color: var(--primary-color);
+    .about-card,.skills-section,.edu-section,.achievement-card,.project-card{
+      background:var(--card-bg);
+      border:1px solid rgba(255,255,255,0.04);
+      border-radius:12px;
+      padding:25px;
+      box-shadow:var(--shadow);
+      color:#c6d6e6;
     }
 
-    /* Section Styles */
-    section {
-        padding: 80px 0;
-    }
-    
-    .section-title {
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 50px;
-      color: var(--secondary-color);
-      position: relative;
+    .skill-label{
+      display:flex;
+      justify-content:space-between;
+      margin-bottom:5px;
     }
 
-    .section-title::after {
-      content: "";
-      width: 70px;
-      height: 4px;
-      background: var(--primary-color);
-      display: block;
-      margin: 15px auto 0;
-      border-radius: 2px;
-    }
-    
-    /* About Section */
-    #about p {
-        max-width: 700px;
+    .progress{
+      height:10px;
+      border-radius:5px;
     }
 
-    /* Skills Section */
-    .skill-badge {
-      display: inline-block;
-      background: #e9ecef;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 10px 20px;
-      margin: 8px;
-      font-weight: 500;
-      transition: all 0.3s;
+    .project-card{
+      background:var(--card-bg);
+      border:none;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      transition:transform .3s,box-shadow .3s;
+      height:100%;
+    }
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(0,194,203,0.15);}
+    .project-card img{width:100%;height:240px;object-fit:cover;}
+    .project-body{padding:20px;}
+    footer{
+      padding:35px 0;
+      border-top:1px solid rgba(255,255,255,0.05);
+      color:var(--muted);
+      text-align:center;
     }
 
-    .skill-badge:hover {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
-      transform: translateY(-3px);
-    }
+    .reveal{opacity:0;transform:translateY(15px);transition:opacity .6s ease,transform .6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
 
-    /* Projects Section */
-    .project-card {
-      border: 1px solid var(--border-color);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--card-shadow);
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .project-card img {
-      height: 220px;
-      object-fit: cover;
-      width: 100%;
-    }
-    
-    .project-card .card-body {
-        padding: 25px;
-    }
-
-    .project-card .card-title {
-        font-weight: 600;
-        color: var(--secondary-color);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--secondary-color);
-      color: #adb5bd;
-      padding: 60px 0;
-      margin-top: 60px;
-    }
-
-    footer h5 {
-        color: white;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
-
-    footer p, footer a {
-        color: #adb5bd;
-        text-decoration: none;
-    }
-
-    footer a:hover {
-      color: white;
-      text-decoration: underline;
-    }
-    
-    footer .social-icons a {
-        font-size: 1.5rem;
-        margin: 0 10px;
-        transition: color 0.3s;
-    }
-    
+    @keyframes gradientAnimation {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
   </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg sticky-top">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Sasanapuri Kavya Sri</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="#home">&lt; Kavya Sri /&gt;</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#Achievements">Achievements</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <header class="hero">
-    <div class="container">
-      <h1>I'm <span class="highlight">Kavya Sri</span>, a UI/UX & Front-End Developer</h1>
-      <p>
-        I build clean, responsive, and high-performance user interfaces with a focus on creating intuitive and delightful digital experiences. 
-        I am a quick learner and a committed team player, eager to contribute my problem-solving skills to a dynamic, collaborative team.
-      </p>
-      <div class="mt-4">
-        <a href="#projects" class="btn btn-primary-custom">View My Work</a>
-      </div>
+  <!-- Hero -->
+  <header id="home" class="hero">
+    <h1 style="font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; text-align: center;">Hi, I'm Kavya Sri</h1>
+
+    <p class="reveal">A passionate <strong>Front-End Developer</strong> dedicated to building clean, responsive, and high-performance web interfaces using HTML, CSS, JavaScript, and React.</p>
+    <div class="reveal">
+        <a href="#projects" class="btn-outline-accent">View Projects</a>
+        <a href="https://github.com/kavyasri2209" target="_blank" View My Work class="btn-outline-accent">My Work</a>
+      
+      <a href="#contact" class="btn-outline-accent">Contact Me</a>
     </div>
   </header>
 
-  <section id="about" class="container text-center">
-    <h2 class="section-title">About Me</h2>
-    <p class="mx-auto">
-      I’m an <strong>Entry-Level Front-End Developer</strong> with recent coursework in <strong>UI/UX Development</strong>. I'm proficient in <strong>JavaScript, HTML5, CSS3, and Bootstrap</strong>, with hands-on project experience using <strong>React</strong>. I hold a <strong>Bachelor of Technology (CSE)</strong> from Rajiv Gandhi University of Knowledge Technologies-Nuzvid.
-    </p>
-  </section>
-
-  <section id="skills" class="container text-center bg-light rounded-3">
-    <h2 class="section-title">My Tech Stack</h2>
-    <div class="skills">
-      <span class="skill-badge">HTML</span>
-      <span class="skill-badge">CSS</span>
-      <span class="skill-badge">Bootstrap</span>
-      <span class="skill-badge">Javascript</span>
-      <span class="skill-badge">React.js</span>
-      <span class="skill-badge">UI/UX Development</span>
-      <span class="skill-badge">Responsive Design</span>
-      <span class="skill-badge">CSS Grid & Flexbox</span>
-    </div>
-  </section>
-
-  <section id="projects" class="container">
-    <h2 class="section-title text-center">Featured Projects</h2>
-    <div class="row g-4 justify-content-center">
-      <div class="col-lg-5 col-md-6">
-        <div class="card project-card h-100">
-          <img src="https://images.unsplash.com/photo-1542435503-956c469947f6?q=80&w=1974&auto=format&fit=crop" alt="Responsive E-Zine">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"><strong>Responsive E-Zine</strong></h5>
-            <p class="card-text">
-              A demonstration of <strong>advanced front-end layout techniques</strong> using <strong>CSS Grid</strong> to build a robust and flexible structure. Successfully achieved <strong>full responsiveness</strong> for optimal display across all device sizes.
-            </p>
-            <div class="mt-auto">
-                <a href="https://kavyasri2209.github.io/magazine-vth-html/" target="_blank" class="btn btn-primary-custom btn-sm">View Project <i class="bi bi-arrow-right-short"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-5 col-md-6">
-        <div class="card project-card h-100">
-          <img src="https://images.unsplash.com/photo-1520692712255-9175a2f55973?q=80&w=2070&auto=format&fit=crop" alt="To-Do List">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"><strong>To-Do List Web App</strong></h5>
-            <p class="card-text">
-              A classic task management application built with <strong>vanilla JavaScript</strong>. The front-end is styled responsively using <strong>HTML, CSS, and Bootstrap</strong> for a visually clean interface, demonstrating fundamental <strong>DOM manipulation</strong>.
-            </p>
-            <div class="mt-auto">
-                <a href="https://kavyasri2209.github.io/To-Do-list-with-JavaScript/" target="_blank" class="btn btn-primary-custom btn-sm">View Project <i class="bi bi-arrow-right-short"></i></a>
-            </div>
-          </div>
-        </div>
+  <main>
+    <!-- About -->
+    <!-- About & Education -->
+<section id="about" class="container reveal">
+  <h2 class="section-title">About & Education</h2>
+  <div class="row g-4 mt-4">
+    <!-- About Card -->
+    <div class="col-lg-6">
+      <div class="about-card h-100 p-4">
+        <h4 class="mb-3" style="color:var(--accent)">About Me</h4>
+        <p>I'm an enthusiastic <strong>Entry-Level Front-End Developer</strong> passionate about creating clean, responsive, and interactive web interfaces. I’m proficient in <strong>HTML5, CSS3, JavaScript, Bootstrap</strong> and have hands-on experience with <strong>React.js</strong>.</p>
+        <p>I love translating ideas into visually appealing, functional web interfaces that work seamlessly across devices. My goal is to continuously improve my front-end skills while contributing to real-world projects that enhance user experiences.</p>
+        <p>I’m a quick learner, a collaborative team player, and enjoy tackling new challenges in the world of web development.</p>
       </div>
     </div>
-  </section>
 
-  <footer id="contact">
-    <div class="container text-center">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h5>Let's Connect</h5>
-                <p>
-                    I'm currently looking for new opportunities and would love to chat. Feel free to reach out via email or connect with me on LinkedIn.
-                </p>
-                <div class="social-icons my-4">
-                    <a href="mailto:kavyasri336@gmail.com" title="Email"><i class="bi bi-envelope-fill"></i></a>
-                    <a href="https://www.linkedin.com/in" target="_blank" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                    <a href="tel:8008261883" title="Call"><i class="bi bi-telephone-fill"></i></a>
-                </div>
-                <hr style="border-color: #6c757d;">
-                <p class="mt-4">
-                    © 2025 Sasanapuri Kavya Sri | Designed with Passion
-                </p>
-            </div>
-        </div>
+    <!-- Education Card -->
+    <div class="col-lg-6">
+      <div class="about-card h-100 p-4">
+        <h4 class="mb-3" style="color:var(--accent)">Education</h4>
+        <ul style="list-style: disc;  padding-left: 20px;">
+          <li class="mb-3">
+            <h6>Bachelor of Technology (CSE)</h6>
+            <p class="mb-0">Rajiv Gandhi University of Knowledge Technologies, Nuzvid (2020 – 2024)</p>
+          </li>
+          <li class="mb-3">
+            <h6>Intermediate (MPC)</h6>
+            <p class="mb-0">Rajiv Gandhi University of Knowledge Technologies, Nuzvid (2018 – 2020)</p>
+          </li>
+          <li class="mb-3">
+            <h6>SSC</h6>
+            <p class="mb-0">K.N.M. Girls High School, Visakhapatnam (2017 – 2018)</p>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+</section>
+
+
+    <!-- Skills -->
+<!-- Skills Section Horizontal Cards -->
+<section id="skills" class="container">
+  <h2 class="section-title" style="text-align:center;">Skills</h2>
+  <div class="skills-section" style="display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:30px;">
+
+    <!-- HTML5 Card -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:15px; background:#141426; padding:25px; border-radius:16px; width:140px; box-shadow:0 8px 20px rgba(0,194,203,0.2);">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5" style="width:60px; height:60px;">
+      <span style="color:#ffffff; font-weight:700; text-align:center;">HTML5</span>
+    </div>
+
+    <!-- CSS3 Card -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:15px; background:#141426; padding:25px; border-radius:16px; width:140px; box-shadow:0 8px 20px rgba(0,194,203,0.2);">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3" style="width:60px; height:60px;">
+      <span style="color:#ffffff; font-weight:700; text-align:center;">CSS3</span>
+    </div>
+
+    <!-- Bootstrap Card -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:15px; background:#141426; padding:25px; border-radius:16px; width:140px; box-shadow:0 8px 20px rgba(0,194,203,0.2);">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="Bootstrap" style="width:60px; height:60px;">
+      <span style="color:#ffffff; font-weight:700; text-align:center;">Bootstrap</span>
+    </div>
+
+    <!-- JavaScript Card -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:15px; background:#141426; padding:25px; border-radius:16px; width:140px; box-shadow:0 8px 20px rgba(0,194,203,0.2);">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript" style="width:60px; height:60px;">
+      <span style="color:#ffffff; font-weight:700; text-align:center;">JavaScript</span>
+    </div>
+
+    <!-- React.js Card -->
+    <div style="display:flex; flex-direction:column; align-items:center; gap:15px; background:#141426; padding:25px; border-radius:16px; width:140px; box-shadow:0 8px 20px rgba(0,194,203,0.2);">
+      <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React.js" style="width:60px; height:60px;">
+      <span style="color:#ffffff; font-weight:700; text-align:center;">React.js</span>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Projects -->
+    
+<section id="projects" class="container">
+  <h2 class="section-title" style="text-align:center;">Projects</h2>
+  <div class="row g-4" style="margin-top:20px;">
+
+    <!-- Magazine Layout Project -->
+    <div class="col-md-6" style="display:flex; justify-content:center;">
+      <div style="background:#141426; border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,194,203,0.15); width:100%;">
+        <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=2070&q=80" 
+             alt="Responsive E-Zine Layout" 
+             style="width:100%; height:240px; object-fit:cover;">
+        <div style="padding:20px;">
+          <h5 style="color:#ffffff;">Responsive E-Zine Layout</h5>
+          <p style="color:#c6d6e6;">Created a magazine-style layout using <strong>CSS Grid</strong> and <strong>Flexbox</strong>. Designed for perfect responsiveness and readability across all devices.</p>
+          <a href="https://kavyasri2209.github.io/magazine-vth-html/" target="_blank" 
+             style="display:inline-block; padding:6px 12px; border:1px solid #00c2cb; border-radius:8px; color:#00c2cb; text-decoration:none; font-weight:600;">View Demo</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- To-Do List Project -->
+<div class="col-md-6" style="display:flex; justify-content:center;">
+  <div style="background:#141426; border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,194,203,0.15); width:100%;">
+   <img src="data:image/jpeg;base64,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" alt="To-Do List App" style="width:100%; height:240px; object-fit:cover;">
+    <div style="padding:20px;">
+      <h5 style="color:#ffffff;">To-Do List Web App</h5>
+      <p style="color:#c6d6e6;">Built a simple task manager using <strong>JavaScript</strong> and <strong>Bootstrap</strong>. Allows adding, deleting, and marking tasks as complete with localStorage support.</p>
+      <a href="https://kavyasri2209.github.io/To-Do-list-with-JavaScript/" target="_blank" 
+         style="display:inline-block; padding:6px 12px; border:1px solid #00c2cb; border-radius:8px; color:#00c2cb; text-decoration:none; font-weight:600;">View Demo</a>
+    </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<!-- Achievements Section -->
+<section id="Achievements" class="container">
+  <h2 class="section-title" style="text-align:center;">Achievements</h2>
+  <div class="achievements-section" style="display:flex; justify-content:center; flex-wrap:wrap; gap:30px; margin-top:30px;">
+
+    <!-- Ongoing Course Card -->
+    <div style="background:#141426; padding:25px; border-radius:16px; box-shadow:0 8px 25px rgba(0,194,203,0.15); width:400px; display:flex; flex-direction:column; align-items:flex-start; gap:15px;">
+      <h5 style="color:#00c2cb; font-weight:700;">UI/UX Development Course</h5>
+      <p style="color:#c6d6e6; margin:0;">
+        Currently enrolled at Tech Mahindra SMART Academy for Digital Technologies (Aug 2025 – Nov 2025, Visakhapatnam). 
+        Gaining practical knowledge of <strong>UI/UX principles</strong> including user research, wireframing, prototyping, and responsive design. 
+        Working on hands-on projects to create <strong>interactive and user-friendly interfaces</strong> that enhance user experience across multiple devices. 
+        Actively learning modern design patterns and tools to convert ideas into visually appealing web designs.
+      </p>
+    </div>
+
+    <!-- Certificate Card -->
+    <div style="background:#141426; padding:25px; border-radius:16px; box-shadow:0 8px 25px rgba(0,194,203,0.15); width:400px; display:flex; flex-direction:column; align-items:flex-start; gap:15px;">
+      <h5 style="color:#00c2cb; font-weight:700;">Responsive Web Design Certificate</h5>
+      <p style="color:#c6d6e6; margin:0;">
+        Completed foundational HTML5, CSS3, Flexbox, and CSS Grid concepts via freeCodeCamp. 
+        Learned to build <strong>fully responsive websites</strong> that adapt seamlessly to different screen sizes. 
+        Practiced <strong>semantic HTML</strong> and <strong>modern CSS techniques</strong> to structure and style web pages efficiently. 
+        This certificate demonstrates a strong understanding of core front-end development concepts and the ability to create user-friendly, visually appealing websites.  <br>
+        <a href="https://www.freecodecamp.org/certification/fcc-31a91b75-36b9-4fbb-8bae-bfb131a9a469/responsive-web-design" target="_blank" style="color:#00c2cb; text-decoration:none;">View Certificate</a>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Contact -->
+    <section id="contact" class="container text-center mt-5 reveal">
+      <h2 class="section-title">Contact</h2>
+      <p>📩 <a href="mailto:kavyasri336@gmail.com" class="text-decoration-none text-info">kavyasri336@gmail.com</a></p>
+      <p>📞 8008261883</p>
+      <div>
+        <a href="www.linkedin.com/in/sasanapuri-kavya-sri-09ba2335b" target="_blank" class="btn-outline-accent">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 <strong>Kavya Sri</strong> | Built with 💙 HTML, CSS & Bootstrap
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Scroll reveal effect
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{threshold:0.2});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
